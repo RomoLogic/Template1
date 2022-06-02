@@ -37,4 +37,28 @@ console.log(imagen)
 
 
 })
+function Tabla() {
+    let contenidotabla =document.getElementById("contenidotabla")
+    let misdatos ;
+    fetch('tabla.json')
+    .then(response=> response.json())
+    .then(data=>{
 
+
+        data.forEach(element => {
+           misdatos += ` 
+          
+           <tr> 
+                    
+                     <td>${element.UserID}</td>  
+                     <td>${element.Id}</td>
+                     <td>${element.Titulo}</td>
+                     <td>${element.Completado ? "Activo" : "Inactivo"}</td>
+           </tr>
+                     `
+            
+        });
+        contenidotabla.innerHTML = misdatos
+    })
+
+}
